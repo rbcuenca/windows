@@ -1,0 +1,37 @@
+INHERIT: active-handout.yml
+
+site_name: Linux Basico
+
+extra:
+  custom_variables:
+    repo_aps: https://github.com/rbcuenca/windows
+    repo_aps_git: https://github.com/rbcuenca/windows.git
+
+extra_javascript:
+  - js/tabs.js
+  - js/termynal.js
+  - js/custom.js
+
+extra_css:
+    - css/termynal.css
+
+nav:
+  - 'Home': index.md
+  - "Dia 1":
+    - '01 - Fundamentos do PowerShell': modules/01-FundPower/fundamentos.md
+    - '02 - Variáveis em PowerShell': modules/02-VarPower/variaveis.md
+    - '03 - Execução de scripts básicos': modules/03-ExecScript/scripts.md
+    - '04 - Conceito de variáveis de ambiente': modules/04-ConceitoVarAmb/variavel.md
+    - '05 - Visualização e modificação de variáveis de ambiente via GUI e PowerShell': modules/05-VarGUI/visiups.md
+  - "Dia 2":
+    - '06 - Criação de scripts simples para automação de tarefas': modules/06-ScriptAut/automacao.md
+    - '07 - Uso de loops e condicionais básicos': modules/07-LoopsCond/condicionais.md
+    - '08 - Manipulação de arquivos e diretórios com PowerShell ': modules/08-ManipuArquivos/arquivos.md
+    - '09 - Gerenciamento básico de serviços e processos': modules/09-GerProcess/processos.md
+    - '10 -  Uso do Visualizador de Eventos para diagnóstico simples': modules/10-VisEvent/viseventos.md
+    # - "03 - Batch prediction":
+    #   - "Part 1":
+    #     - modules/03-batch/intro.md
+    #   - "Part 2":
+    #     - modules/03-batch/sql.md
+    #     - modules/03-batch/db_tool.md
