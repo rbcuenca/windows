@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
       
-        <title>Linux Basico</title>
+        <title>Windows</title>
       
     
     <link rel="stylesheet"
@@ -65,10 +65,10 @@
 </svg>
         </button>
         <a href="."
-           title="Linux Basico"
+           title="Windows"
            class="ah-logo"
-           aria-label="Linux Basico">
-          Linux Basico
+           aria-label="Windows">
+          Windows
         </a>
         <div class="ah-header--right">
           
@@ -106,7 +106,7 @@
             
             
               <li class="ah-toc-item">
-                <a href="#atividade-complementar-introducao-ao-linux-ubuntu">Atividade Complementar: Introdução ao Linux Ubuntu</a>
+                <a href="#atividade-complementar-windows">Atividade Complementar: Windows</a>
               </li>
             
         
@@ -229,83 +229,8 @@
           </div>
           
             <section class="progress-section show">
-<h1 id="atividade-introducao-ao-linux-ubuntu">Atividade: Introdução ao Linux Ubuntu</h1>
-<h2 id="atividade-complementar-introducao-ao-linux-ubuntu"><strong>Atividade Complementar: Introdução ao Linux Ubuntu</strong></h2>
-<h3 id="publico-alvo"><strong>Público-Alvo</strong></h3>
-<p>Esta atividade é destinada a alunos com familiaridade no uso de computadores que desejam explorar o universo do sistema operacional Linux, com foco na distribuição Ubuntu. É especialmente recomendado para estudantes das áreas de Engenharia e Tecnologia.</p>
-<h3 id="requisitos-tecnicos"><strong>Requisitos Técnicos</strong></h3>
-<p>Para acompanhar as aulas, os alunos deverão atender aos seguintes requisitos mínimos, dependendo da forma de instalação escolhida:</p>
-<h4 id="instalacao-em-maquina-virtual"><strong>Instalação em Máquina Virtual</strong></h4>
-<ul>
-<li>Processador AMD Ryzen 5 (2ª geração ou superior);</li>
-<li>Processador Intel Core i5 (9ª geração ou superior);</li>
-<li>8 GB de memória RAM (Desejável 16G de memória RAM);</li>
-<li>80 GB de espaço livre no disco.</li>
-</ul>
-<h4 id="instalacao-no-computador"><strong>Instalação no Computador</strong></h4>
-<p>*Nota: Não é compatível com MacBooks equipados com Apple Silicon;</p>
-<ul>
-<li>Processador AMD Ryzen 5 (2ª geração ou superior);</li>
-<li>Processador Intel Core i5 (8ª geração ou superior). </li>
-<li>Um segundo disco rígido disponível com pelo menos 80 GB de espaço livre;</li>
-<li>Backup prévio dos arquivos pessoais (<strong>há risco de perda de dados durante o processo</strong>);</li>
-<li><strong>Trazer</strong> Pen drive com capacidade mínima de 8 GB para a instalação do Linux.
-<a href="" id="arquivos"></a></li>
-</ul>
-<h4 id="arquivos-necessarios"><strong>Arquivos Necessários</strong></h4>
-<ul>
-<li>VirtualBox para <a href="https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe">Windows:</a></li>
-<li>VirtualBox para <a href="https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-OSX.dmg">MacOS:</a>
-**Há uma vesão do VirtualBox para o MacOS Apple Silicon, mas só é possível usar o ubuntu arm que não é totalmente compatível com o que faremos.</li>
-<li>Imagem ISO do <a href="https://releases.ubuntu.com/jammy/ubuntu-22.04.5-desktop-amd64.iso">Ubuntu 22.04.x:</a></li>
-<li>Rufus <a href="https://github.com/pbatard/rufus/releases/download/v4.6/rufus-4.6p.exe">para criar o pendrive bootavel:</a></li>
-</ul>
-<h3 id="atividade">Atividade</h3>
-<ul>
-<li>Fez os downloads propostos acima?</li>
-<li>Organizou estes arquivos para fácil localização?</li>
-<li>Já escolheu se usará uma Máquina Virtual ou se fará o "Dual boot" em seu computador?</li>
-</ul>
-<p>Se você escolheu instalar em Máquina Virtual, vá para a <a href="modules/01-virtualbox/VirtualBox.md">Instalação do VirtualBox</a></p>
-<p>Se você escolheu fazer o "Dual boot", vá para <a href="modules/02-dualboot/Dualboot.md">Fazer "Dual boot"</a></p>
-<h3 id="objetivo-geral"><strong>Objetivo Geral</strong></h3>
-<p>A atividade tem como objetivo oferecer aos alunos uma introdução prática ao sistema operacional Linux, capacitando-os a realizar a instalação, configuração e personalização do ambiente, além de preparar o sistema para atividades relacionadas à programação e uso pessoal.</p>
-<h3 id="competencias-adquiridas"><strong>Competências Adquiridas</strong></h3>
-<p>Ao final da atividade, os alunos serão capazes de:
-- Instalar o Linux Ubuntu em uma máquina virtual ou diretamente em um computador;
-- Configurar e personalizar o ambiente de trabalho para maior produtividade;
-- Preparar o sistema para desenvolvimento ou uso pessoal.</p>
-<h3 id="objetivos-especificos"><strong>Objetivos Específicos</strong></h3>
-<p>Os objetivos específicos da atividade incluem:
-1. Instalar o Linux Ubuntu Desktop 22.04 em uma máquina virtual utilizando o VirtualBox ou em seu computador quando houver a possibilidade.
-2. Configurar o ambiente visual do sistema operacional para maior familiaridade e produtividade, aproximando-o da interface Windows;
-3. Personalizar o terminal Linux para otimizar fluxos de trabalho e integrar ferramentas como GitHub;
-4. Utilizar comandos básicos do terminal Linux para navegação e gerenciamento do sistema;
-5. Instalar e configurar ferramentas essenciais, como:
-   - Visual Studio Code (VS Code);
-   - Gerenciadores de pacotes APT e DPKG (essenciais para distribuições baseadas em Debian);
-   - Oh-My-Bash, para personalização avançada do terminal.</p>
-<h3 id="estrutura-das-aulas"><strong>Estrutura das Aulas</strong></h3>
-<p>A atividade será realizada em dois encontros, cada um com duração de 2 horas. A divisão dos conteúdos é apresentada a seguir:</p>
-<h4 id="dia-1-instalacao-do-sistema"><strong>Dia 1: Instalação do Sistema</strong></h4>
-<ul>
-<li>Configuração da máquina virtual / Preparação do Pendrive de boot</li>
-<li>Instalação do Ubuntu Desktop 22.04.</li>
-<li>Atualização do sistema operacional via terminal.</li>
-<li>Criação de <em>aliases</em> no terminal para automação de atualizações futuras.</li>
-</ul>
-<h4 id="dia-2-configuracao-visual-e-instalacao-de-softwares"><strong>Dia 2: Configuração Visual e Instalação de Softwares</strong></h4>
-<ul>
-<li>Personalização visual do sistema operacional.</li>
-<li>Instalação dos drivers necessários.</li>
-<li>Instalação dos seguintes softwares:</li>
-<li>Google Chrome (utilizando o gerenciador DPKG);</li>
-<li>Visual Studio Code (utilizando o gerenciador DPKG);</li>
-<li>Terminator (utilizando o gerenciador APT);</li>
-<li>Oh-My-Bash (com suporte a ferramentas como <a href="https://www.gnu.org/software/wget/"><code>wget</code></a> ou <a href="https://curl.se/"><code>curl</code></a>);</li>
-<li>Fontes adicionais para personalização avançada do terminal.</li>
-</ul>
-<p>Com esta estrutura, a atividade proporcionará aos alunos uma base sólida no uso do Linux Ubuntu, preparando-os tanto para atividades acadêmicas quanto profissionais que exigem domínio desse sistema operacional amplamente utilizado no mercado.</p>
+<h1 id="atividade-sistema-operacional-windows-uma-visao-um-pouco-mais-tecnica">Atividade: Sistema Operacional Windows - Uma visão um pouco mais técnica</h1>
+<h2 id="atividade-complementar-windows"><strong>Atividade Complementar: Windows</strong></h2>
 
 
 </section>
