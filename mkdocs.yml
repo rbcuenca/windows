@@ -1,6 +1,6 @@
 INHERIT: active-handout.yml
 
-site_name: Linux Basico
+site_name: Windows
 
 extra:
   custom_variables:
