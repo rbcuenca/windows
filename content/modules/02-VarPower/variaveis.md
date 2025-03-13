@@ -2,17 +2,19 @@
 
 Variáveis de ambiente são valores que afetam o comportamento de processos em um sistema operacional. Elas são usadas por aplicativos e scripts para configurar comportamentos específicos, como caminhos de sistema, configurações de aplicativos ou informações sensíveis.
 
-Tipos de Variáveis de Ambiente
+## Tipos de Variáveis de Ambiente
 
 * Variáveis de Sistema: Afetam todos os usuários do sistema e são definidas no nível do sistema operacional.
 * Variáveis de Usuário: São específicas para cada usuário e são definidas no perfil do usuário.
 * Variáveis de Processo: São criadas por um processo e são destruídas quando o processo termina.
 
-Como Visualizar e Modificar Variáveis de Ambiente
-Via GUI
+## Como Visualizar e Modificar Variáveis de Ambiente
+
+### Via GUI
 Painel de Controle:
 
 Vá para "Sistema" ou "Sistema e Segurança" > "Sistema" > "Configurações avançadas do sistema" > "Variáveis de Ambiente".
+![Variáveis de Ambiente - GUI](img/img02-001.png)
 
 Editar Variáveis:
 
@@ -20,15 +22,24 @@ Para variáveis de sistema, clique em "Novo" ou "Editar" na seção "Variáveis 
 
 Para variáveis de usuário, faça o mesmo na seção "Variáveis do usuário".
 
-Via PowerShell
+### PowerShell
 Visualizar Variáveis:
 
-powershell
-Get-ChildItem Env:
-Modificar Variáveis:
 
-powershell
+``` PowerShell
+
+Get-ChildItem Env:
+
+``` 
+<br>
+
+![Mostrar Variaveis](img/img02-002.png)
+<br>
+Modificar Variáveis:
+``` PowerShell
 $Env:VARIAVEL = "valor"
+``` 
+
 Para variáveis persistentes, use:
 
 powershell
