@@ -42,9 +42,12 @@ $Env:VARIAVEL = "valor"
 
 Para variáveis persistentes, use:
 
-powershell
+```powershell
 [System.Environment]::SetEnvironmentVariable("MINHA_VAR", "MeuValor", "User")
-Uso Prático de Variáveis de Ambiente
+``` 
+
+## Uso Prático de Variáveis de Ambiente
+
 Variáveis de ambiente são frequentemente usadas para:
 
 Caminhos de sistema: Definir locais de instalação de aplicativos ou bibliotecas.
@@ -54,3 +57,12 @@ Configurações de aplicativos: Armazenar informações de configuração que n�
 Segurança: Armazenar informações sensíveis, como chaves de API, de forma segura.
 
 Elas são essenciais para manter configurações consistentes entre diferentes sessões e aplicativos no Windows.
+
+### Exemplo
+
+Para exemplificar o uso de variáveis, vamos fazer um pequeno script com o famoso "Hello World".
+
+Você terá duas opções a partir deste momento, ou você clona o repositório desta atividade:
+``` PowerShell
+git clone https://github.com/rbcuenca/windows.git
+```

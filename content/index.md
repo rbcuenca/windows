@@ -14,6 +14,9 @@ Com o Windows 11, o PowerShell é ainda mais integrado, mas o Prompt de Comando 
 
 Agora que conhecemos um pouco da história do PowerShell, vamos padronizar que todas as telas vistas nesta atividade serão do Windows 11 e o vamos tomar por padrão, uma vez que o suporte ao Windows 10 se encerra em Outubro deste ano.
 
+## Editor de Códigos
+
+Existem diversos editores que são excelentes para a criação dos scripts. Recomendo o uso do [VS Code](https://code.visualstudio.com/docs/?dv=win64user), mas você pode usar o próprio notepad sem problemas. 
 
 ## Projeto
 
