@@ -126,6 +126,18 @@
           
             
             
+              <li class="ah-toc-item">
+                <a href="#tipos-de-variaveis-de-ambiente">Tipos de Variáveis de Ambiente</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#como-visualizar-e-modificar-variaveis-de-ambiente">Como Visualizar e Modificar Variáveis de Ambiente</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#uso-pratico-de-variaveis-de-ambiente">Uso Prático de Variáveis de Ambiente</a>
+              </li>
+            
         
       </ul>
     </li>
@@ -230,13 +242,71 @@
           
             <section class="progress-section show">
 <h1 id="variaveis-em-powershell">Variáveis em PowerShell</h1>
-<p>As variáveis no PowerShell são precedidas por $. Por exemplo:</p>
-<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>powershell
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$nome = &quot;Alice&quot;
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>$idade = 30
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Write-Host &quot;Olá, $nome! Você tem $idade anos.&quot;
+<p>Variáveis de ambiente são valores que afetam o comportamento de processos em um sistema operacional. Elas são usadas por aplicativos e scripts para configurar comportamentos específicos, como caminhos de sistema, configurações de aplicativos ou informações sensíveis.</p>
+<h2 id="tipos-de-variaveis-de-ambiente">Tipos de Variáveis de Ambiente</h2>
+<ul>
+<li>Variáveis de Sistema: Afetam todos os usuários do sistema e são definidas no nível do sistema operacional.</li>
+<li>Variáveis de Usuário: São específicas para cada usuário e são definidas no perfil do usuário.</li>
+<li>Variáveis de Processo: São criadas por um processo e são destruídas quando o processo termina.</li>
+</ul>
+<h2 id="como-visualizar-e-modificar-variaveis-de-ambiente">Como Visualizar e Modificar Variáveis de Ambiente</h2>
+<h3 id="via-gui">Via GUI</h3>
+<p>Painel de Controle:</p>
+<p>Vá para "Sistema" ou "Sistema e Segurança" &gt; "Sistema" &gt; "Configurações avançadas do sistema" &gt; "Variáveis de Ambiente".
+<a class="glightbox" href="../img/img02-001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Variáveis de Ambiente - GUI" src="../img/img02-001.png" /></a></p>
+<p>Editar Variáveis:</p>
+<p>Para variáveis de sistema, clique em "Novo" ou "Editar" na seção "Variáveis do sistema".</p>
+<p>Para variáveis de usuário, faça o mesmo na seção "Variáveis do usuário".</p>
+<h3 id="powershell">PowerShell</h3>
+<p>Visualizar Variáveis:</p>
+<p><div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Get-ChildItem</span> <span class="n">Env</span><span class="p">:</span>
 </code></pre></div>
-<p>As variáveis são tipadas dinamicamente, o que significa que o PowerShell infere o tipo de dado automaticamente.</p>
+<br></p>
+<p><a class="glightbox" href="../img/img02-002.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Mostrar Variaveis" src="../img/img02-002.png" /></a>
+<br>
+Modificar Variáveis:
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$Env:VARIAVEL</span> <span class="p">=</span> <span class="s2">&quot;valor&quot;</span>
+</code></pre></div></p>
+<p>Para variáveis persistentes, use:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="no">[System.Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;MINHA_VAR&quot;</span><span class="p">,</span> <span class="s2">&quot;MeuValor&quot;</span><span class="p">,</span> <span class="s2">&quot;User&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="uso-pratico-de-variaveis-de-ambiente">Uso Prático de Variáveis de Ambiente</h2>
+<p>Variáveis de ambiente são frequentemente usadas para:</p>
+<p>Caminhos de sistema: Definir locais de instalação de aplicativos ou bibliotecas.</p>
+<p>Configurações de aplicativos: Armazenar informações de configuração que não devem ser hard-coded.</p>
+<p>Segurança: Armazenar informações sensíveis, como chaves de API, de forma segura.</p>
+<p>Elas são essenciais para manter configurações consistentes entre diferentes sessões e aplicativos no Windows.</p>
+<h3 id="exemplo">Exemplo</h3>
+<p>Para exemplificar o uso de variáveis, vamos fazer um pequeno script com o famoso "Hello World".</p>
+<p>Você terá duas opções a partir deste momento, ou você clona o repositório desta atividade:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">rbcuenca</span><span class="p">/</span><span class="n">windows</span><span class="p">.</span><span class="n">git</span>
+</code></pre></div>
+<p>Ou você cria um diretório para iniciar o primeiro script:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mkdir</span> <span class="n">windows</span>
+</code></pre></div>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Ao abrir o PowerShell ele te direciona para a pasta (diretório) do seu usuário, então todas as pastas e arquivos criados, ou clonados, estarão nesta pasta. Mas nada te impede de fazer em qualquer outro lugar.
+Apenas fique atento e não utilize dois meios de sincronismo em nubens ao mesmo tempo. Por exemplo, clona um repositório github dentro de uma pasta do OneDrive. 
+</div>
+
+<p>Em ambos os casos vocë terá uma pasta chamada <strong>windows</strong> dentro do seu usuário. (caso tenha escolhido outra pasta, basta trocar o nome) Então vamos "entrar" ou "subir" para esta pasta e criar o nosso script.</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd </span><span class="n">windows</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">code</span> <span class="n">ExemploVariaveis</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>Em seguida vamos digitar o seguinte texto dentro do arquivo:</p>
+<p><div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Exemplo de script para fazer o Hello World em PowerShell. </span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c"># Para este exemplo, vamos criar uma variável de ambiente chamada SAUDACAO e atribuir o valor &quot;Ola Mundo!&quot; a ela. </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c"># Em seguida, vamos exibir o valor da variável de ambiente SAUDACAO.</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$Env:SAUDACAO</span> <span class="p">=</span> <span class="s2">&quot;Ola Mundo!&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">Write-Host</span> <span class="nv">$Env:SAUDACAO</span>
+</code></pre></div>
+<a class="glightbox" href="../img/img02-003.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemplo Variáveis no PowerShell" src="../img/img02-003.png" /></a></p>
+<p>Neste momento você criou seu primeiro script para PowerShell utilizando variáveis de ambiente.
+No primeiro comando você criou a variável de ambiente <strong>SAUDACAO</strong> e colocou o conteúdo <strong>Ola Mundo!</strong>. No segundo comando você utilizou o comando <strong>Write-Host</strong>para escrever o conteúdo da variável de ambiente <strong>SAUDACAO</sTrong>.</p>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Não utilize palavas com acentuação ou outros carecteres especiais como o "<strong>ç</strong>". Vale lembrar que estas variáveis são "case sensitivity", ou seja ele reconhece de forma diferente letras <strong>minúsculas</strong> e <strong>maiúsculas</strong>. 
+</div>
 
 
 </section>

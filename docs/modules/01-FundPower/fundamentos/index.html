@@ -119,6 +119,14 @@
             
             
               <li class="ah-toc-item">
+                <a href="#abrindo-e-personalizando-o-powershell-posh">Abrindo e personalizando o PowerShell - Posh</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#navegando-entre-os-diretorios">Navegando entre os diretórios</a>
+              </li>
+            
+              <li class="ah-toc-item">
                 <a href="#sintaxe-basica">Sintaxe Básica</a>
               </li>
             
@@ -238,6 +246,66 @@
           
             <section class="progress-section show">
 <h1 id="fundamentos-do-powershell">Fundamentos do PowerShell</h1>
+<h2 id="abrindo-e-personalizando-o-powershell-posh">Abrindo e personalizando o PowerShell - Posh</h2>
+<p>O Windows PowerShell  (também chamado de PS) é muito mais do que um "prompt de comandos" como o antigo cmd herdado do DOS.</p>
+<p>Este terminal tem muitos recusros e acessos ao sistema opercaional.</p>
+<p>Para abror o PS, vá ao menu iniciar e pesquise por <strong>PowerShell</strong> ou use as teclas <kbd>Ctrl</kbd>+<kbd>R</kbd> para abrir a janela de execução e escreva <strong>PowerShell</strong>.</p>
+<p>É comum utilizarmos respositórios GIT no dia a dia. Para facilitar a manipulação destes diretórios, vamos ter nosso primeiro contato com o PS instalando o Oh-My-Posh (similar ao oh-my-bash que usamos no Linux Ubuntu).</p>
+<p>Para isso vamos usar o gerenciador de pacotes do Windows, o winget, para instalar o OhMyPowh:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">winget</span> <span class="n">upgrade</span> <span class="n">JanDeDobbeleer</span><span class="p">.</span><span class="n">OhMyPosh</span> <span class="n">-s</span> <span class="n">winget</span>
+</code></pre></div>
+<p>Para usarmos o tema padrão do Oh-My-Posh, é preciso usar as <a href="https://www.nerdfonts.com/">Nerd Fonts</a>. Para instalarmos, vamos o usar a extençao de fontes do Oh-My-Posh:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">oh-my-posh</span> <span class="n">font</span> <span class="n">install</span>
+</code></pre></div>
+<p>Escolha a fonte <strong>meslo</strong>.</p>
+<p>Se quiser instalar apenas a fonte escolhida mas sem percorrer as demais, vocë pode instalar da seguinte forma:</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">oh-my-posh</span> <span class="n">font</span> <span class="n">install</span> <span class="n">meslo</span>
+</code></pre></div>
+<p>Agora que temos a base do Oh-My-Posh, vamos fazer com que ele seja iniciado automaticamente.</p>
+<ul>
+<li>Se você já alterou o script de início do PS, ignore o primeiro comando e vá para o segundo.</li>
+</ul>
+<p>Vamos então criar o script inicial do PS e na sequencia editar no próprio notepad.</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="n">-Type</span> <span class="n">File</span> <span class="n">-Force</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">notepad</span> <span class="nv">$PROFILE</span>
+</code></pre></div>
+<p>Então acrescente a seguinte linha: </p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">oh-my-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+</code></pre></div>
+<p>Agora você pode fechar e abrir novamente o PS e verá uma tela com este tema:
+<a class="glightbox" href="../img/posh001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Posh com Oh-My-Posh" src="../img/posh001.png" /></a></p>
+<p>Agora que já temos alguma familiaridade com o PS, vamos ver alguns comandos básicos.</p>
+<h2 id="navegando-entre-os-diretorios">Navegando entre os diretórios</h2>
+<p>Quando você abre o PS ele está no diretório raiz do seu uruário. Você pode listar o conteúdo desta pasta de arquivos com o comando <strong>ls</strong>. Veja o print de tela:
+<a class="glightbox" href="../img/posh002.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Posh com comnado ls" src="../img/posh002.png" /></a></p>
+<p>Vamos entender o que está nesta tela. </p>
+<ul>
+<li>Coluna <strong>Mode</strong> trás informações sobre o item:<ul>
+<li>d: Diretório</li>
+<li>l: Link (pode ser um link simbólico, atalho, etc.)</li>
+<li>a: Arquivo marcado para backup (indicando que foi modificado desde o último backup)</li>
+<li>r: Somente leitura</li>
+<li>h: Arquivo ou diretório oculto</li>
+<li>s: Arquivo ou diretório do sistema (protegido pelo sistema operacional)</li>
+</ul>
+</li>
+<li>Coluna <strong>LastWriteTime</strong> trás informações sobre a data e hora da última modificação do item</li>
+<li>Coluna <strong>Length</strong> trás o tamanho do item, se for um arquivo</li>
+<li>Coluna <strong>Name</strong> trás o nome do item.</li>
+</ul>
+<p>Para entrar em um diretório ou "subir" em um diretório você usa o comando <strong>cd</strong> seguido do diretório que deseja entrar. Não se esqueça de teclar <kbd>Enter</kbd> depois de cada comando!</p>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> a tecla <kbd>TAB</kbd> funciona como um auto-completar para o que você está digitando.
+</div>
+
+<p>Para exemplificar, vou entrar no diretório windows (diretório do repositório desta AC)</p>
+<p><a class="glightbox" href="../img/posh003.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Posh subindo para diretorio windows" src="../img/posh003.png" /></a></p>
+<p>para voltar um diretório atrás, use <strong>cd ..</strong>.</p>
+<p><a class="glightbox" href="../img/posh004.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Posh descendo um niveo de diretorio" src="../img/posh004.png" /></a></p>
+<p>Pronto, agora já sabemos navegar nas pastas, editar arquivos texto usando o notepad (você pode trocar por code se estiver usando o vscode) e a listar os arquivos e pastas existentes em uma pasta que você está.</p>
+<p>Também já utilizamos o winget para instalar os pacotes do oh-my-posh.</p>
+<p>Vamos partir então para sintaxes do PS e uma utilização mais interessante dele.</p>
 <h2 id="sintaxe-basica">Sintaxe Básica</h2>
 <p>A sintaxe do PowerShell segue um padrão "Verbo-Substantivo". Por exemplo:</p>
 <p>Get-Process: Obtém informações sobre processos em execução</p>
@@ -245,9 +313,14 @@
 <p>New-Item: Cria um novo item (arquivo, pasta, etc.)</p>
 <p>Este padrão torna os comandos mais intuitivos e fáceis de lembrar.</p>
 <h2 id="comandos-essenciais">Comandos Essenciais</h2>
-<p>Get-Help: Fornece informações detalhadas sobre comandos</p>
+<p>Get-Help: Fornece informações detalhadas sobre comandos. </p>
 <p>Get-Command: Lista todos os comandos disponíveis</p>
 <p>Get-Member: Mostra propriedades e métodos de objetos</p>
+<p>Como exemplo, vamos usar o cmdlet abaixo e saber como funciona o Stop-Service:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Get-Help Stop-Service
+</code></pre></div>
+<p>Após executar este comando, você verá algo parecido com um manual do comando que passou como parâmetro.
+<a class="glightbox" href="../img/posh005.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Posh executando Get-Help" src="../img/posh005.png" /></a></p>
 <p>Estes comandos são fundamentais para aprender e explorar o PowerShell.</p>
 
 

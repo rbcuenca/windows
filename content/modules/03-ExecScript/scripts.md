@@ -1,5 +1,22 @@
 # Execução de Scripts Básicos
 
+## Permissão para executar scripts
+
+Por padrão o PS não permite a execução de scripts, então precisamos alterar esta permissão.
+
+Vamos abrir o PS como administrador (botão direito e Executar como Administrador), em seguida vamos exetuar o seguinte comando:
+
+``` PowerShell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+
+Após mudar a política, você pode verificar com o comando
+
+``` PowerShell
+Get-ExecutionPolicy
+```
+
+
 ## Como executar um script
 
 Este é o tópico mais simples desta atividade complementar.

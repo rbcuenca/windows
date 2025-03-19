@@ -15,7 +15,7 @@ Para isso vamos usar o gerenciador de pacotes do Windows, o winget, para instala
 
 ``` PowerShell
 
-winget upgrade JanDeDobbeleer.OhMyPosh -s winget
+winget install JanDeDobbeleer.OhMyPosh -s winget
 
 ```
 
@@ -58,6 +58,10 @@ Então acrescente a seguinte linha:
 oh-my-posh init pwsh | Invoke-Expression
 
 ```
+
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Você pode ter uma tela de erros devido à política de execução de scripts padrão do windows. Se isso acontecer, abra o PowerShell como administrador (clicando com o botão direito e escolhendo Executar como Admnistrador) e digite o seguinte comando no terminal: Set-ExecutionPolicy RemoteSigned
+</div><br>
 
 Agora você pode fechar e abrir novamente o PS e verá uma tela com este tema:
 ![Posh com Oh-My-Posh](img/posh001.png)
