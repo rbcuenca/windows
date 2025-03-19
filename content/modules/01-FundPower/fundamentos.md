@@ -2,13 +2,13 @@
 
 ## Abrindo e personalizando o PowerShell - Posh
 
-O Windows PowerShell  (também chamado de Posh) é muito mais do que um "prompt de comandos" como o antigo cmd herdado do DOS.
+O Windows PowerShell  (também chamado de PS) é muito mais do que um "prompt de comandos" como o antigo cmd herdado do DOS.
 
 Este terminal tem muitos recusros e acessos ao sistema opercaional.
 
-Para abror o Posh, vá ao menu iniciar e pesquise por **PowerShell** ou use as teclas <kbd>Ctrl</kbd>+<kbd>R</kbd> para abrir a janela de execução e escreva **PowerShell**.
+Para abror o PS, vá ao menu iniciar e pesquise por **PowerShell** ou use as teclas <kbd>Ctrl</kbd>+<kbd>R</kbd> para abrir a janela de execução e escreva **PowerShell**.
 
-É comum utilizarmos respositórios GIT no dia a dia. Para facilitar a manipulação destes diretórios, vamos ter nosso primeiro contato com o Posh instalando o Oh-My-Posh (similar ao oh-my-bash que usamos no Linux Ubuntu).
+É comum utilizarmos respositórios GIT no dia a dia. Para facilitar a manipulação destes diretórios, vamos ter nosso primeiro contato com o PS instalando o Oh-My-Posh (similar ao oh-my-bash que usamos no Linux Ubuntu).
 
 Para isso vamos usar o gerenciador de pacotes do Windows, o winget, para instalar o OhMyPowh:
 
@@ -39,9 +39,9 @@ oh-my-posh font install meslo
 
 Agora que temos a base do Oh-My-Posh, vamos fazer com que ele seja iniciado automaticamente.
 
-* Se você já alterou o script de início do Posh, ignore o primeiro comando e vá para o segundo.
+* Se você já alterou o script de início do PS, ignore o primeiro comando e vá para o segundo.
 
-Vamos então criar o script inicial do Posh e na sequencia editar no próprio notepad.
+Vamos então criar o script inicial do PS e na sequencia editar no próprio notepad.
 
 ``` PowerShell
 
@@ -59,14 +59,14 @@ oh-my-posh init pwsh | Invoke-Expression
 
 ```
 
-Agora você pode fechar e abrir novamente o Posh e verá uma tela com este tema:
+Agora você pode fechar e abrir novamente o PS e verá uma tela com este tema:
 ![Posh com Oh-My-Posh](img/posh001.png)
 
-Agora que já temos alguma familiaridade com o Posh, vamos ver alguns comandos básicos.
+Agora que já temos alguma familiaridade com o PS, vamos ver alguns comandos básicos.
 
 ## Navegando entre os diretórios
 
-Quando você abre o Posh ele está no diretório raiz do seu uruário. Você pode listar o conteúdo desta pasta de arquivos com o comando **ls**. Veja o print de tela:
+Quando você abre o PS ele está no diretório raiz do seu uruário. Você pode listar o conteúdo desta pasta de arquivos com o comando **ls**. Veja o print de tela:
 ![Posh com comnado ls](img/posh002.png)
 
 Vamos entender o que está nesta tela. 
@@ -100,7 +100,7 @@ Pronto, agora já sabemos navegar nas pastas, editar arquivos texto usando o not
 
 Também já utilizamos o winget para instalar os pacotes do oh-my-posh.
 
-Vamos partir então para sintaxes do Posh e uma utilização mais interessante dele.
+Vamos partir então para sintaxes do PS e uma utilização mais interessante dele.
 
 ## Sintaxe Básica
 A sintaxe do PowerShell segue um padrão "Verbo-Substantivo". Por exemplo:

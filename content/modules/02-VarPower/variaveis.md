@@ -63,6 +63,44 @@ Elas são essenciais para manter configurações consistentes entre diferentes s
 Para exemplificar o uso de variáveis, vamos fazer um pequeno script com o famoso "Hello World".
 
 Você terá duas opções a partir deste momento, ou você clona o repositório desta atividade:
+
 ``` PowerShell
 git clone https://github.com/rbcuenca/windows.git
 ```
+
+Ou você cria um diretório para iniciar o primeiro script:
+
+``` PowerShell
+mkdir windows
+```
+
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Ao abrir o PowerShell ele te direciona para a pasta (diretório) do seu usuário, então todas as pastas e arquivos criados, ou clonados, estarão nesta pasta. Mas nada te impede de fazer em qualquer outro lugar.
+Apenas fique atento e não utilize dois meios de sincronismo em nubens ao mesmo tempo. Por exemplo, clona um repositório github dentro de uma pasta do OneDrive. 
+</div>
+
+Em ambos os casos vocë terá uma pasta chamada <strong>windows</strong> dentro do seu usuário. (caso tenha escolhido outra pasta, basta trocar o nome) Então vamos "entrar" ou "subir" para esta pasta e criar o nosso script.
+
+``` PowerShell
+cd windows
+code ExemploVariaveis.ps1
+```
+
+Em seguida vamos digitar o seguinte texto dentro do arquivo:
+
+``` PowerShell
+# Exemplo de script para fazer o Hello World em PowerShell. 
+# Para este exemplo, vamos criar uma variável de ambiente chamada SAUDACAO e atribuir o valor "Ola Mundo!" a ela. 
+# Em seguida, vamos exibir o valor da variável de ambiente SAUDACAO.
+
+$Env:SAUDACAO = "Ola Mundo!"
+Write-Host $Env:SAUDACAO
+```
+![Exemplo Variáveis no PowerShell](img/img02-003.png)
+
+Neste momento você criou seu primeiro script para PowerShell utilizando variáveis de ambiente.
+No primeiro comando você criou a variável de ambiente <strong>SAUDACAO</strong> e colocou o conteúdo <strong>Ola Mundo!</strong>. No segundo comando você utilizou o comando <strong>Write-Host</strong>para escrever o conteúdo da variável de ambiente <strong>SAUDACAO</sTrong>.
+
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Não utilize palavas com acentuação ou outros carecteres especiais como o "<strong>ç</strong>". Vale lembrar que estas variáveis são "case sensitivity", ou seja ele reconhece de forma diferente letras <strong>minúsculas</strong> e <strong>maiúsculas</strong>. 
+</div>
