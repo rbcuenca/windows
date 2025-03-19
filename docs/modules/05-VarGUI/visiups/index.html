@@ -147,6 +147,22 @@
       <span class="ah-togglable-handle">05 - Visualização e modificação de variáveis de ambiente via GUI e PowerShell</span>
       <ul>
         
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#via-powershell">Via PowerShell</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#via-gui">Via GUI</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exemplo-pratico">Exemplo Prático</a>
+              </li>
+            
+        
       </ul>
     </li>
   
@@ -225,6 +241,95 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="visualizacao-e-modificacao-de-variaveis-de-ambiente">Visualização e Modificação de Variáveis de Ambiente</h1>
+<h2 id="via-powershell">Via PowerShell</h2>
+<h4 id="visualizar-variaveis-de-ambiente">Visualizar Variáveis de Ambiente</h4>
+<p>Para visualizar todas as variáveis de ambiente no PowerShell, use o comando:</p>
+<p><div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Get-ChildItem</span> <span class="n">Env</span><span class="p">:</span>
+</code></pre></div>
+<a class="glightbox" href="../img/img001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Resultado do Comando Get-ChildItem ENV:" src="../img/img001.png" /></a></p>
+<p>Este comando lista todas as variáveis de ambiente atuais, incluindo seus valores.</p>
+<h4 id="modificar-variaveis-de-ambiente">Modificar Variáveis de Ambiente</h4>
+<p>Para modificar uma variável de ambiente, você pode usar a seguinte sintaxe:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$Env:NomeDaVariavel</span> <span class="p">=</span> <span class="s2">&quot;NovoValor&quot;</span>
+</code></pre></div>
+<p>Por exemplo, para alterar a variável <code>TEMP</code>, você faria:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$Env:TEMP</span> <span class="p">=</span> <span class="s2">&quot;C:\MeuDiretorioTemp&quot;</span>
+</code></pre></div>
+<p>Você pode veriricar a alteração da variável com o comando</p>
+<p><div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Write-Host</span> <span class="nv">$Env:TEMP</span>
+</code></pre></div>
+Agora você pode retornar para o valor <code>padrão</code> do sistema com o seguinte comando</p>
+<div class="language-PowerShell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$Env:TEMP</span> <span class="p">=</span> <span class="no">[System.Environment]</span><span class="p">::</span><span class="n">GetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;TEMP&quot;</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Confira se a variável voltou ao padrão que estava antes da alteração.</p>
+<p>** No entanto, essa alteração é temporária e só permanece até o fim da sessão atual do PowerShell.</p>
+<h4 id="criar-variaveis-de-ambiente-persistentes">Criar Variáveis de Ambiente Persistentes</h4>
+<p>Para criar uma variável de ambiente persistente, use o método <code>[Environment]::SetEnvironmentVariable</code>:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;NomeDaVariavel&quot;</span><span class="p">,</span> <span class="s2">&quot;Valor&quot;</span><span class="p">,</span> <span class="s2">&quot;User&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Note que o último parâmetro do comando é <strong>User</strong> ou seja, afeta apenas o usuário em uso.
+</div>
+<p><br></p>
+<p>Para o escopo "Machine", que afeta todos os usuários:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;NomeDaVariavel&quot;</span><span class="p">,</span> <span class="s2">&quot;Valor&quot;</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Agora que o último parâmetro do comando é <strong>Machine</strong> todos os usuários serão afetados.
+</div>
+<p><br></p>
+<h2 id="via-gui">Via GUI</h2>
+<h4 id="acessar-variaveis-de-ambiente-no-painel-de-controle">Acessar Variáveis de Ambiente no Painel de Controle</h4>
+<ol>
+<li><strong>Abrir o Painel de Controle</strong>:<ul>
+<li>Pressione <kbd><code>Win</code></kbd>+<kbd><code>R</code></kbd>, digite <code>control</code> e pressione Enter.</li>
+</ul>
+</li>
+<li><strong>Ir para Sistema</strong>:<ul>
+<li>Selecione "Sistema" ou "Sistema e Segurança" &gt; "Sistema".</li>
+</ul>
+</li>
+<li><strong>Configurações Avançadas</strong>:<ul>
+<li>Clique em "Configurações avançadas do sistema" na lateral direita.</li>
+</ul>
+</li>
+<li><strong>Variáveis de Ambiente</strong>:<ul>
+<li>Na guia "Avançado", clique em "Variáveis de Ambiente".</li>
+</ul>
+</li>
+<li><strong>Editar ou Adicionar Variáveis</strong>:<ul>
+<li>Na janela "Variáveis de Ambiente", você pode adicionar, editar ou remover variáveis tanto para o usuário atual quanto para o sistema.</li>
+</ul>
+</li>
+</ol>
+<h4 id="adicionar-uma-variavel-de-ambiente">Adicionar uma Variável de Ambiente</h4>
+<ol>
+<li><strong>Clique em "Novo"</strong>:<ul>
+<li>Na seção "Variáveis do usuário" ou "Variáveis do sistema", clique em "Novo".</li>
+<li>Insira o nome e valor da variável.</li>
+</ul>
+</li>
+<li><strong>Salvar Alterações</strong>:<ul>
+<li>Clique em "OK" para salvar a nova variável.</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemplo-pratico">Exemplo Prático</h2>
+<p>Suponha que você queira criar uma variável de ambiente chamada <code>MEU_CAMINHO</code> que aponte para um diretório específico.</p>
+<p><strong>Via PowerShell</strong>:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">$Env:MEU_CAMINHO</span> <span class="p">=</span> <span class="s2">&quot;C:\MeuDiretorio&quot;</span>
+</code></pre></div>
+<p>Para torná-la persistente:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;MEU_CAMINHO&quot;</span><span class="p">,</span> <span class="s2">&quot;C:\MeuDiretorio&quot;</span><span class="p">,</span> <span class="s2">&quot;User&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Via GUI</strong>:</p>
+<ul>
+<li>Repita os cinco passos anteriores para chegar nas Variáveis de Ambiente, partindo do painel de controle.</li>
+<li>Na seção "Variáveis do usuário", clique em "Novo".</li>
+<li>Insira <code>MEU_CAMINHO</code> como nome e <code>C:\MeuDiretorio</code> como valor.</li>
+</ul>
+<p>Essas são as principais formas de visualizar e modificar variáveis de ambiente no Windows usando PowerShell e a interface gráfica do usuário.</p>
 
 
 </section>
