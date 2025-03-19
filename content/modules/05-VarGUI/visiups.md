@@ -86,7 +86,7 @@ Para o escopo "Machine", que afeta todos os usuários:
 2. **Salvar Alterações**:
     - Clique em "OK" para salvar a nova variável.
 
-### Exemplo Prático
+## Exemplo Prático
 
 Suponha que você queira criar uma variável de ambiente chamada `MEU_CAMINHO` que aponte para um diretório específico.
 
