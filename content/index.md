@@ -1,7 +1,5 @@
 # Atividade: Sistema Operacional Windows - Uma visão um pouco mais técnica
 
-[Endereço do GitHub Pages: ](https://rbcuenca.github.io/windows/)
-
 ## **Atividade Complementar: Windows - PowerShell**
 
 Sejam bem vindos! Temos por objetivo desta atividade a intrudução do uso do PowerShell, um terminal poderoso que encontramos no Windows d. 

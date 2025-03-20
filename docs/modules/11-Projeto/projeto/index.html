@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>11 - Projeto Final - Windows</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = true;
+      var tagTree = [{'reference': ['choice-exercise', 'parsons-exercise', 'text-exercise']}, {'grandparent-tag': [{'parent-tag': ['child-tag']}]}];
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../css/termynal.css"><link rel="stylesheet" href="../../../termynal.css">
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../.."
+           title="Windows"
+           class="ah-logo"
+           aria-label="Windows">
+          Windows
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Dia 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../01-FundPower/fundamentos/">01 - Fundamentos do PowerShell</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../02-VarPower/variaveis/">02 - Variáveis em PowerShell</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../03-ExecScript/scripts/">03 - Execução de scripts básicos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../04-ConceitoVarAmb/variavel/">04 - Conceito de variáveis de ambiente</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../05-VarGUI/visiups/">05 - Visualização e modificação de variáveis de ambiente via GUI e PowerShell</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Dia 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../06-ScriptAut/automacao/">06 - Criação de scripts simples para automação de tarefas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../07-LoopsCond/condicionais/">07 - Uso de loops e condicionais básicos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../08-ManipuArquivos/arquivos/">08 - Manipulação de arquivos e diretórios com PowerShell </a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../09-GerProcess/processos/">09 - Gerenciamento básico de serviços e processos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../10-VisEvent/viseventos/">10 -  Uso do Visualizador de Eventos para diagnóstico simples</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">11 - Projeto Final</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#solucao-funcional-para-o-windows-11">Solução Funcional para o Windows 11</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../12-Gabarito/gabarito/">12 - Projeto Final - Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Projeto</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="enunciado-do-projeto">Enunciado do Projeto</h1>
+<p><strong>Título:</strong> Sistema de Monitoramento de Recursos do Sistema</p>
+<p><strong>Objetivo:</strong> Criar um script PowerShell que monitora o uso de CPU, memória e disco, gera relatórios diários e envia alertas por e-mail quando os limites pré-definidos são ultrapassados.</p>
+<p><strong>Requisitos:</strong></p>
+<ol>
+<li><strong>Monitoramento de Recursos</strong>:<ul>
+<li>Coletar informações sobre o uso de CPU, memória e disco.</li>
+<li>Usar variáveis para armazenar os limites de alerta.</li>
+</ul>
+</li>
+<li><strong>Geração de Relatórios</strong>:<ul>
+<li>Criar relatórios diários sobre o uso de recursos.</li>
+<li>Salvar os relatórios em um diretório especificado.</li>
+</ul>
+</li>
+<li><strong>Envio de Alertas</strong>:<ul>
+<li>Enviar alertas por e-mail quando os limites forem ultrapassados.</li>
+<li>Usar variáveis de ambiente para armazenar informações de e-mail.</li>
+</ul>
+</li>
+<li><strong>Tratamento de Erros e Logging</strong>:<ul>
+<li>Implementar tratamento de erros para garantir que o script continue funcionando mesmo em caso de erros.</li>
+<li>Registrar eventos importantes no Visualizador de Eventos.</li>
+</ul>
+</li>
+</ol>
+<h2 id="solucao-funcional-para-o-windows-11">Solução Funcional para o Windows 11</h2>
+<h3 id="passo-1-configuracao-inicial">Passo 1: Configuração Inicial</h3>
+<ol>
+<li><strong>Definir Limites de Alerta</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$cpuThreshold</span> <span class="p">=</span> <span class="n">80</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$memoryThreshold</span> <span class="p">=</span> <span class="n">90</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$diskThreshold</span> <span class="p">=</span> <span class="n">85</span>
+</code></pre></div>
+<ol>
+<li><strong>Definir Diretório para Relatórios</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$reportDir</span> <span class="p">=</span> <span class="s2">&quot;C:\SystemReports&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Criar Diretório para Relatórios se Não Existir</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="nv">$reportDir</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="nv">$reportDir</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="passo-2-funcao-de-monitoramento">Passo 2: Função de Monitoramento</h3>
+<ol>
+<li><strong>Coletar Informações de Uso de Recursos</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nv">$cpu</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_Processor</span> <span class="p">|</span> <span class="nb">Measure-Object</span> <span class="n">-Property</span> <span class="n">LoadPercentage</span> <span class="n">-Average</span><span class="p">).</span><span class="n">Average</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nv">$memory</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_OperatingSystem</span><span class="p">).</span><span class="n">FreePhysicalMemory</span> <span class="p">/</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_ComputerSystem</span><span class="p">).</span><span class="n">TotalPhysicalMemory</span> <span class="p">*</span> <span class="n">100</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nv">$disk</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_LogicalDisk</span> <span class="n">-Filter</span> <span class="s2">&quot;DeviceID=&#39;C:&#39;&quot;</span><span class="p">).</span><span class="n">FreeSpace</span> <span class="p">/</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_LogicalDisk</span> <span class="n">-Filter</span> <span class="s2">&quot;DeviceID=&#39;C:&#39;&quot;</span><span class="p">).</span><span class="n">Size</span> <span class="p">*</span> <span class="n">100</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">return</span> <span class="p">@{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">CPU</span> <span class="p">=</span> <span class="nv">$cpu</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">Memory</span> <span class="p">=</span> <span class="nv">$memory</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">Disk</span> <span class="p">=</span> <span class="nv">$disk</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="passo-3-geracao-de-relatorios">Passo 3: Geração de Relatórios</h3>
+<ol>
+<li><strong>Função para Gerar Relatórios</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">function</span> <span class="n">Generate-Report</span> <span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">param</span><span class="p">(</span><span class="nv">$systemInfo</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nv">$report</span> <span class="p">=</span> <span class="s2">&quot;System Report - </span><span class="p">$(</span><span class="nb">Get-Date</span><span class="p">)</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;CPU Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;Memory Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;Disk Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nv">$report</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="s2">&quot;$reportDir\DailyReport_</span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="s2">.txt&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="passo-4-envio-de-alertas">Passo 4: Envio de Alertas</h3>
+<ol>
+<li><strong>Configuração de E-mail</strong>:<ul>
+<li>Use variáveis de ambiente para armazenar informações de e-mail.</li>
+</ul>
+</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$smtpServer</span> <span class="p">=</span> <span class="nv">$env:SMTP_SERVER</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">$smtpFrom</span> <span class="p">=</span> <span class="nv">$env:SMTP_FROM</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">$smtpTo</span> <span class="p">=</span> <span class="nv">$env:SMTP_TO</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">$smtpSubject</span> <span class="p">=</span> <span class="s2">&quot;System Alert&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Função para Enviar Alertas</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">function</span> <span class="nb">Send-Alert</span> <span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">param</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nb">Send-MailMessage</span> <span class="n">-SmtpServer</span> <span class="nv">$smtpServer</span> <span class="n">-From</span> <span class="nv">$smtpFrom</span> <span class="n">-To</span> <span class="nv">$smtpTo</span> <span class="n">-Subject</span> <span class="nv">$smtpSubject</span> <span class="n">-Body</span> <span class="nv">$message</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="passo-5-monitoramento-e-alertas">Passo 5: Monitoramento e Alertas</h3>
+<ol>
+<li><strong>Loop de Monitoramento</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">while</span> <span class="p">(</span><span class="nv">$true</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nv">$systemInfo</span> <span class="p">=</span> <span class="nb">Get-SystemInfo</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">Generate-Report</span> <span class="n">-systemInfo</span> <span class="nv">$systemInfo</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span> <span class="o">-gt</span> <span class="nv">$cpuThreshold</span> <span class="o">-or</span> <span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span> <span class="o">-gt</span> <span class="nv">$memoryThreshold</span> <span class="o">-or</span> <span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span> <span class="o">-lt</span> <span class="p">(</span><span class="n">100</span> <span class="p">-</span> <span class="nv">$diskThreshold</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="nv">$alertMessage</span> <span class="p">=</span> <span class="s2">&quot;CPU: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span><span class="p">)</span><span class="s2">%, Memory: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span><span class="p">)</span><span class="s2">%, Disk: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span><span class="p">)</span><span class="s2">%&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="nb">Send-Alert</span> <span class="n">-message</span> <span class="nv">$alertMessage</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="n">60</span> <span class="c"># Aguarde 1 minuto antes de verificar novamente</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="passo-6-tratamento-de-erros-e-logging">Passo 6: Tratamento de Erros e Logging</h3>
+<ol>
+<li><strong>Tratamento de Erros</strong>:<ul>
+<li>Use try-catch para capturar erros e registrar eventos no Visualizador de Eventos.</li>
+</ul>
+</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="c"># Código do script aqui</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">Write-EventLog</span> <span class="n">-LogName</span> <span class="n">Application</span> <span class="n">-Source</span> <span class="s2">&quot;SystemMonitor&quot;</span> <span class="n">-EntryType</span> <span class="n">Error</span> <span class="n">-EventID</span> <span class="n">1</span> <span class="n">-Message</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Criar Fonte de Eventos se Não Existir</strong>:</li>
+</ol>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Get-EventLog</span> <span class="n">-List</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">LogDisplayName</span> <span class="o">-eq</span> <span class="s2">&quot;Application&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Source</span> <span class="o">-eq</span> <span class="s2">&quot;SystemMonitor&quot;</span><span class="p">}))</span> <span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nb">New-EventLog</span> <span class="n">-Source</span> <span class="s2">&quot;SystemMonitor&quot;</span> <span class="n">-LogName</span> <span class="n">Application</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="solucao-completa">Solução Completa</h3>
+<p>Aqui está o script completo com todos os passos integrados:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c"># Configuração Inicial</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">$cpuThreshold</span> <span class="p">=</span> <span class="n">80</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">$memoryThreshold</span> <span class="p">=</span> <span class="n">90</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">$diskThreshold</span> <span class="p">=</span> <span class="n">85</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$reportDir</span> <span class="p">=</span> <span class="s2">&quot;C:\SystemReports&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="nv">$reportDir</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="nv">$reportDir</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c"># Criar fonte de eventos se não existir</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Get-EventLog</span> <span class="n">-List</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">LogDisplayName</span> <span class="o">-eq</span> <span class="s2">&quot;Application&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Source</span> <span class="o">-eq</span> <span class="s2">&quot;SystemMonitor&quot;</span><span class="p">}))</span> <span class="p">{</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="nb">New-EventLog</span> <span class="n">-Source</span> <span class="s2">&quot;SystemMonitor&quot;</span> <span class="n">-LogName</span> <span class="n">Application</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">}</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c"># Função de Monitoramento</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="nv">$cpu</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_Processor</span> <span class="p">|</span> <span class="nb">Measure-Object</span> <span class="n">-Property</span> <span class="n">LoadPercentage</span> <span class="n">-Average</span><span class="p">).</span><span class="n">Average</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>    <span class="nv">$memory</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_OperatingSystem</span><span class="p">).</span><span class="n">FreePhysicalMemory</span> <span class="p">/</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_ComputerSystem</span><span class="p">).</span><span class="n">TotalPhysicalMemory</span> <span class="p">*</span> <span class="n">100</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>    <span class="nv">$disk</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_LogicalDisk</span> <span class="n">-Filter</span> <span class="s2">&quot;DeviceID=&#39;C:&#39;&quot;</span><span class="p">).</span><span class="n">FreeSpace</span> <span class="p">/</span> <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_LogicalDisk</span> <span class="n">-Filter</span> <span class="s2">&quot;DeviceID=&#39;C:&#39;&quot;</span><span class="p">).</span><span class="n">Size</span> <span class="p">*</span> <span class="n">100</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="k">return</span> <span class="p">@{</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>        <span class="n">CPU</span> <span class="p">=</span> <span class="nv">$cpu</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>        <span class="n">Memory</span> <span class="p">=</span> <span class="nv">$memory</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>        <span class="n">Disk</span> <span class="p">=</span> <span class="nv">$disk</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>    <span class="p">}</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="p">}</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="c"># Função para Gerar Relatórios</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="k">function</span> <span class="n">Generate-Report</span> <span class="p">{</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>    <span class="k">param</span><span class="p">(</span><span class="nv">$systemInfo</span><span class="p">)</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>    <span class="nv">$report</span> <span class="p">=</span> <span class="s2">&quot;System Report - </span><span class="p">$(</span><span class="nb">Get-Date</span><span class="p">)</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;CPU Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;Memory Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>    <span class="nv">$report</span> <span class="p">+=</span> <span class="s2">&quot;Disk Usage: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span><span class="p">)</span><span class="s2">%</span><span class="se">`n</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>    <span class="nv">$report</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="s2">&quot;$reportDir\DailyReport_</span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="s2">.txt&quot;</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="p">}</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="c"># Configuração de E-mail</span>
+<a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="nv">$smtpServer</span> <span class="p">=</span> <span class="nv">$env:SMTP_SERVER</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a><span class="nv">$smtpFrom</span> <span class="p">=</span> <span class="nv">$env:SMTP_FROM</span>
+<a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a><span class="nv">$smtpTo</span> <span class="p">=</span> <span class="nv">$env:SMTP_TO</span>
+<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="nv">$smtpSubject</span> <span class="p">=</span> <span class="s2">&quot;System Alert&quot;</span>
+<a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a>
+<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="c"># Função para Enviar Alertas</span>
+<a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="k">function</span> <span class="nb">Send-Alert</span> <span class="p">{</span>
+<a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a>    <span class="k">param</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span>
+<a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a>
+<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a>    <span class="nb">Send-MailMessage</span> <span class="n">-SmtpServer</span> <span class="nv">$smtpServer</span> <span class="n">-From</span> <span class="nv">$smtpFrom</span> <span class="n">-To</span> <span class="nv">$smtpTo</span> <span class="n">-Subject</span> <span class="nv">$smtpSubject</span> <span class="n">-Body</span> <span class="nv">$message</span>
+<a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a><span class="p">}</span>
+<a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a>
+<a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a><span class="c"># Loop de Monitoramento</span>
+<a id="__codelineno-10-55" name="__codelineno-10-55" href="#__codelineno-10-55"></a><span class="k">while</span> <span class="p">(</span><span class="nv">$true</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-56" name="__codelineno-10-56" href="#__codelineno-10-56"></a>    <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a>        <span class="nv">$systemInfo</span> <span class="p">=</span> <span class="nb">Get-SystemInfo</span>
+<a id="__codelineno-10-58" name="__codelineno-10-58" href="#__codelineno-10-58"></a>
+<a id="__codelineno-10-59" name="__codelineno-10-59" href="#__codelineno-10-59"></a>        <span class="n">Generate-Report</span> <span class="n">-systemInfo</span> <span class="nv">$systemInfo</span>
+<a id="__codelineno-10-60" name="__codelineno-10-60" href="#__codelineno-10-60"></a>
+<a id="__codelineno-10-61" name="__codelineno-10-61" href="#__codelineno-10-61"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span> <span class="o">-gt</span> <span class="nv">$cpuThreshold</span> <span class="o">-or</span> <span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span> <span class="o">-gt</span> <span class="nv">$memoryThreshold</span> <span class="o">-or</span> <span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span> <span class="o">-lt</span> <span class="p">(</span><span class="n">100</span> <span class="p">-</span> <span class="nv">$diskThreshold</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-10-62" name="__codelineno-10-62" href="#__codelineno-10-62"></a>            <span class="nv">$alertMessage</span> <span class="p">=</span> <span class="s2">&quot;CPU: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">CPU</span><span class="p">)</span><span class="s2">%, Memory: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Memory</span><span class="p">)</span><span class="s2">%, Disk: </span><span class="p">$(</span><span class="nv">$systemInfo</span><span class="p">.</span><span class="n">Disk</span><span class="p">)</span><span class="s2">%&quot;</span>
+<a id="__codelineno-10-63" name="__codelineno-10-63" href="#__codelineno-10-63"></a>            <span class="nb">Send-Alert</span> <span class="n">-message</span> <span class="nv">$alertMessage</span>
+<a id="__codelineno-10-64" name="__codelineno-10-64" href="#__codelineno-10-64"></a>        <span class="p">}</span>
+<a id="__codelineno-10-65" name="__codelineno-10-65" href="#__codelineno-10-65"></a>
+<a id="__codelineno-10-66" name="__codelineno-10-66" href="#__codelineno-10-66"></a>        <span class="nb">Start-Sleep</span> <span class="n">-Seconds</span> <span class="n">60</span> <span class="c"># Aguarde 1 minuto antes de verificar novamente</span>
+<a id="__codelineno-10-67" name="__codelineno-10-67" href="#__codelineno-10-67"></a>    <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+<a id="__codelineno-10-68" name="__codelineno-10-68" href="#__codelineno-10-68"></a>        <span class="nb">Write-EventLog</span> <span class="n">-LogName</span> <span class="n">Application</span> <span class="n">-Source</span> <span class="s2">&quot;SystemMonitor&quot;</span> <span class="n">-EntryType</span> <span class="n">Error</span> <span class="n">-EventID</span> <span class="n">1</span> <span class="n">-Message</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span>
+<a id="__codelineno-10-69" name="__codelineno-10-69" href="#__codelineno-10-69"></a>    <span class="p">}</span>
+<a id="__codelineno-10-70" name="__codelineno-10-70" href="#__codelineno-10-70"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="observacoes">Observações</h3>
+<ul>
+<li>Certifique-se de que as variáveis de ambiente para o servidor SMTP, remetente e destinatário estejam configuradas corretamente.</li>
+<li>Ajuste os limites de alerta conforme necessário.</li>
+<li>Execute o script como administrador para garantir acesso a todos os recursos necessários.</li>
+</ul>
+<p>Esse script fornece uma solução funcional para monitorar recursos do sistema e enviar alertas quando os limites forem ultrapassados, além de gerar relatórios diários e registrar eventos importantes.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../10-VisEvent/viseventos/"
+               class="ah-prev"
+               title="10 -  Uso do Visualizador de Eventos para diagnóstico simples">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">10 -  Uso do Visualizador de Eventos para diagnóstico simples</span>
+            </a>
+          
+          
+            <a href="../../12-Gabarito/gabarito/"
+               class="ah-next"
+               title="12 - Projeto Final - Gabarito">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">12 - Projeto Final - Gabarito</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../../js/tabs.js"></script><script src="../../../js/termynal.js"></script><script src="../../../js/custom.js"></script><script src="../../../termynal.js"></script>
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

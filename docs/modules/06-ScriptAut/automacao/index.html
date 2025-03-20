@@ -164,6 +164,30 @@
       <span class="ah-togglable-handle">06 - Criação de scripts simples para automação de tarefas</span>
       <ul>
         
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#introducao">Introdução</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#estrutura-basica-de-um-script">Estrutura Básica de um Script</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#criando-um-script">Criando um Script</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exemplo-de-script-simples">Exemplo de Script Simples</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#executando-o-script">Executando o Script</a>
+              </li>
+            
+        
       </ul>
     </li>
   
@@ -205,6 +229,31 @@
   </li>
 
             
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../11-Projeto/projeto/">11 - Projeto Final</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../12-Gabarito/gabarito/">12 - Projeto Final - Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
           </ul>
         </div>
       </nav>
@@ -225,6 +274,69 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="criacao-de-scripts-para-automacao-de-tarefas">Criação de Scripts para Automação de Tarefas</h1>
+<h2 id="introducao">Introdução</h2>
+<p>Scripts PowerShell são arquivos de texto que contêm uma série de comandos que são executados sequencialmente. Eles são fundamentais para automatizar tarefas repetitivas e simplificar a administração de sistemas.</p>
+<h2 id="estrutura-basica-de-um-script">Estrutura Básica de um Script</h2>
+<p>Um script PowerShell básico consiste em:</p>
+<ol>
+<li><strong>Comandos PowerShell</strong>: Cada linha do script pode conter um comando PowerShell.</li>
+<li><strong>Variáveis</strong>: Usadas para armazenar valores que podem ser usados em diferentes partes do script.</li>
+<li><strong>Estruturas de Controle</strong>: Loops e condicionais permitem que o script tome decisões e execute ações repetidas.</li>
+</ol>
+<h2 id="criando-um-script">Criando um Script</h2>
+<ol>
+<li><strong>Abrir um Editor de Texto</strong>:<ul>
+<li>Como colocado no início da atividade, vamos usar o VSCode.</li>
+</ul>
+</li>
+<li><strong>Escrever o Script</strong>:<ul>
+<li>Digite os comandos PowerShell que você deseja executar.</li>
+</ul>
+</li>
+<li><strong>Salvar o Arquivo</strong>:<ul>
+<li>Salve o arquivo com a extensão <code>.ps1</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemplo-de-script-simples">Exemplo de Script Simples</h2>
+<p>Suponha que você queira criar um script que crie um diretório chamado "MeuDiretorio" no disco C e, em seguida, copie um arquivo chamado "arquivo.txt" para esse diretório.</p>
+<p>Para facilitar, vamos manter o arquivo de origem dentro do diretório corrente desta atividade. Se você clonou, previamente, este repositório, o arquivo já existe.</p>
+<p>Vá até o diretório em que clonou a atividade, ou o diretório que você criou no primeiro script, através so PS.</p>
+<p>Crie um arquivo chamado move_arquivo.ps1 com o comando: <code>code move_arquivo.ps1</code> e coloque o conteúdo a seguir. Não se esqueça de salvar!</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># Criar um novo diretório</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="s2">&quot;C:\MeuDiretorio&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># Copiar um arquivo para o diretório criado</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">Copy-Item</span> <span class="s2">&quot;arquivo.txt&quot;</span> <span class="n">-Destination</span> <span class="s2">&quot;C:\MeuDiretorio&quot;</span>
+</code></pre></div>
+<p>Se você clonou o repositório o arquivo.txt já existe, se você criou a pasta, crie um arquivo chamado arquivo.txt e coloque algum texto dentro dele. Mantenha o arquivo no mesmo diretório.</p>
+<h2 id="executando-o-script">Executando o Script</h2>
+<ol>
+<li><strong>Abrir o PowerShell</strong>:<ul>
+<li>Pressione <kbd><code>Win</code></kbd> + <kbd><code>R</code></kbd>, digite <code>powershell</code> e pressione Enter.</li>
+</ul>
+</li>
+<li><strong>Navegar até o Diretório do Script</strong>:<ul>
+<li>Use o comando <code>cd</code> para ir até o diretório onde o script está salvo.</li>
+</ul>
+</li>
+<li><strong>Executar o Script</strong>:<ul>
+<li>Use o comando <code>.\nomeDoScript.ps1</code> para executar o script.</li>
+</ul>
+</li>
+</ol>
+<p>Exemplo:</p>
+<p><div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.\</span><span class="n">meuScript</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<a class="glightbox" href="../img/img001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Script rodando e comprovação de que rodou" src="../img/img001.png" /></a></p>
+<h3 id="dicas-para-criar-scripts-eficientes">Dicas para Criar Scripts Eficientes</h3>
+<ul>
+<li><strong>Testar Comandos</strong>: Antes de criar um script, teste cada comando individualmente no PowerShell para garantir que ele funcione corretamente.</li>
+<li><strong>Usar Variáveis</strong>: Variáveis podem ajudar a tornar o script mais flexível e reutilizável.</li>
+<li><strong>Tratar Erros</strong>: Use try-catch para lidar com erros e manter o script estável.</li>
+</ul>
+<p>Essas são as bases para criar scripts simples em PowerShell. Com prática, você pode automatizar tarefas complexas e melhorar a eficiência na administração de sistemas.</p>
 
 
 </section>

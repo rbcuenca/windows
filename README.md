@@ -1,2 +1,6 @@
-# Windows - Introdutório
-Curso de introdução ao Sistema Operacional Windows com olhar mais profundo que o usuário convencional
+# Windows - PowerShell
+
+Atividade voltada ao aprendizado de manipulações básicas do PowerShell no Windows 11.
+
+
+[Endereço do GitHub Pages: ](https://rbcuenca.github.io/windows/)

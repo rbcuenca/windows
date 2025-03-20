@@ -196,7 +196,68 @@
       <span class="ah-togglable-handle">10 -  Uso do Visualizador de Eventos para diagnóstico simples</span>
       <ul>
         
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#como-acessar-o-visualizador-de-eventos">Como Acessar o Visualizador de Eventos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#navegando-no-visualizador-de-eventos">Navegando no Visualizador de Eventos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#identificando-eventos-importantes">Identificando Eventos Importantes</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#visualizando-detalhes-de-um-evento">Visualizando Detalhes de um Evento</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#filtrando-eventos">Filtrando Eventos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exemplo-pratico">Exemplo Prático</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exemplo-pratico_1">Exemplo Prático</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#dicas-para-usar-o-visualizador-de-eventos">Dicas para Usar o Visualizador de Eventos</a>
+              </li>
+            
+        
       </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../11-Projeto/projeto/">11 - Projeto Final</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../12-Gabarito/gabarito/">12 - Projeto Final - Gabarito</a>
     </li>
   
 
@@ -225,6 +286,168 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="uso-do-visualizador-de-eventos-para-diagnostico-simples">Uso do Visualizador de Eventos para Diagnóstico Simples</h1>
+<ul>
+<li>Introdução</li>
+</ul>
+<p>O Visualizador de Eventos é uma ferramenta poderosa no Windows que permite aos usuários monitorar e solucionar problemas do sistema operacional. Ele registra eventos significativos, incluindo erros de software, falhas de hardware e avisos de segurança, ajudando a identificar e resolver problemas potenciais.</p>
+<h2 id="como-acessar-o-visualizador-de-eventos">Como Acessar o Visualizador de Eventos</h2>
+<ol>
+<li><strong>No Windows 11 e 10</strong>:<ul>
+<li>Pressione <code>Win + X</code> e selecione "Visualizador de Eventos".</li>
+<li>Ou pressione <code>Win + R</code>, digite <code>eventvwr</code> e pressione Enter.</li>
+</ul>
+</li>
+<li><strong>No Windows 7</strong>:<ul>
+<li>Vá para o Painel de Controle &gt; Sistema e Segurança &gt; Ferramentas Administrativas &gt; Visualizador de Eventos.</li>
+</ul>
+</li>
+</ol>
+<h2 id="navegando-no-visualizador-de-eventos">Navegando no Visualizador de Eventos</h2>
+<ol>
+<li><strong>Logs do Windows</strong>:<ul>
+<li>Clique em "Logs do Windows" no painel esquerdo.</li>
+<li>Selecione "Sistema" para eventos relacionados ao sistema operacional.</li>
+<li>Selecione "Segurança" para eventos de segurança.</li>
+</ul>
+</li>
+<li><strong>Logs de Aplicativos e Serviços</strong>:<ul>
+<li>Contém logs de aplicativos e serviços específicos.</li>
+</ul>
+</li>
+</ol>
+<h2 id="identificando-eventos-importantes">Identificando Eventos Importantes</h2>
+<ol>
+<li><strong>Nível de Evento</strong>:<ul>
+<li><strong>Crítico</strong>: Problemas graves que podem afetar o sistema.</li>
+<li><strong>Erro</strong>: Problemas que podem causar falhas.</li>
+<li><strong>Aviso</strong>: Situações que podem se tornar problemas.</li>
+<li><strong>Informativo</strong>: Eventos normais que não indicam problemas.</li>
+</ul>
+</li>
+<li><strong>ID do Evento</strong>:<ul>
+<li>Cada evento tem um ID único que pode ser usado para pesquisar soluções específicas.</li>
+</ul>
+</li>
+</ol>
+<h2 id="visualizando-detalhes-de-um-evento">Visualizando Detalhes de um Evento</h2>
+<ol>
+<li><strong>Selecione um Evento</strong>:<ul>
+<li>Clique duas vezes em um evento no painel central.</li>
+<li>A janela "Propriedades do Evento" mostrará detalhes sobre o problema.</li>
+</ul>
+</li>
+</ol>
+<h2 id="filtrando-eventos">Filtrando Eventos</h2>
+<ol>
+<li><strong>Filtrar Log Atual</strong>:<ul>
+<li>Clique com o botão direito em uma categoria de log e escolha "Filtrar Log Atual".</li>
+<li>Especifique critérios como nível de evento ou ID de evento.</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemplo-pratico">Exemplo Prático</h2>
+<p>Um erro que temos nas máquinas com <code>Dual Boot</code> é sobre o <code>Secure Boot</code> estar desligado. Veja no print abaixo.</p>
+<p><a class="glightbox" href="../img/img001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Erro TPM - Secure Boot" src="../img/img001.png" /></a></p>
+<ul>
+<li>Uso no PowerShell</li>
+</ul>
+<p>Para acessar eventos do Visualizador de Eventos via PowerShell, use o cmdlet <code>Get-WinEvent</code>:</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Get-WinEvent</span> <span class="n">-LogName</span> <span class="n">System</span>
+</code></pre></div>
+<p>Isso lista eventos do log do sistema. Você pode filtrar eventos por nível ou ID usando parâmetros adicionais.</p>
+<h2 id="exemplo-pratico_1">Exemplo Prático</h2>
+<p>Suponha que você queira encontrar o evento de erro causado pela falta do Secure Boot habilitado. Veja como é o script.</p>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Crie um script de nome erro_tpm.ps1 com o conteúdo a seguir e veja o resultado.</div>
+<p><br></p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$xml</span> <span class="p">=</span> <span class="sh">@&#39;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="sh">&lt;QueryList&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sh">    &lt;Query Id=&quot;0&quot; Path=&quot;System&quot;&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="sh">        &lt;Select Path=&quot;System&quot;&gt;*[System/Provider[@Name=&#39;Microsoft-Windows-TPM-WMI&#39;] and System/Level=2]&lt;/Select&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sh">    &lt;/Query&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sh">&lt;/QueryList&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sh">&#39;@</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">$startDate</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">14</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nv">$events</span> <span class="p">=</span> <span class="nb">Get-WinEvent</span> <span class="n">-FilterXml</span> <span class="nv">$xml</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">TimeCreated</span> <span class="o">-ge</span> <span class="nv">$startDate</span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="nv">$lastError</span> <span class="p">=</span> <span class="nv">$events</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">TimeCreated</span> <span class="n">-Descending</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">1</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Ultimo erro encontrado:&quot;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Dia e Hora: </span><span class="p">$(</span><span class="nv">$lastError</span><span class="p">.</span><span class="n">TimeCreated</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Mensagem: </span><span class="p">$(</span><span class="nv">$lastError</span><span class="p">.</span><span class="n">Message</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Nenhum erro encontrado com fonte &#39;Microsoft-Windows-TPM-WMI&#39; nas ultimas duas semanas.&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="explicacao-passo-a-passo">Explicação Passo a Passo</h3>
+<h4 id="definir-o-filtro-xml"><strong>Definir o Filtro XML</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$xml</span> <span class="p">=</span> <span class="sh">@&#39;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="sh">&lt;QueryList&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sh">    &lt;Query Id=&quot;0&quot; Path=&quot;System&quot;&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sh">        &lt;Select Path=&quot;System&quot;&gt;*[System/Provider[@Name=&#39;Microsoft-Windows-TPM-WMI&#39;] and System/Level=2]&lt;/Select&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="sh">    &lt;/Query&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="sh">&lt;/QueryList&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="sh">&#39;@</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- Este bloco define um filtro XML para buscar eventos.
+- **QueryList**: Contém uma lista de consultas.
+- **Query**: Define uma consulta específica.
+    - **Id=&quot;0&quot;**: Identificador da consulta.
+    - **Path=&quot;System&quot;**: Especifica que os eventos devem ser buscados no log do sistema.
+- **Select**: Especifica quais eventos devem ser selecionados.
+    - **Provider[@Name=&#39;Microsoft-Windows-TPM-WMI&#39;]**: Filtra eventos do provedor &quot;Microsoft-Windows-TPM-WMI&quot;.
+    - **System/Level=2**: Filtra apenas eventos de erro (nível 2).
+</code></pre></div>
+<h4 id="definir-a-data-inicial"><strong>Definir a Data Inicial</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$startDate</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddDays</span><span class="p">(-</span><span class="n">14</span><span class="p">)</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- Esta linha define a data inicial para a busca de eventos. Ela é calculada como a data atual menos 14 dias.
+</code></pre></div>
+<h4 id="buscar-eventos-com-filtro-xml"><strong>Buscar Eventos com Filtro XML</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$events</span> <span class="p">=</span> <span class="nb">Get-WinEvent</span> <span class="n">-FilterXml</span> <span class="nv">$xml</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">TimeCreated</span> <span class="o">-ge</span> <span class="nv">$startDate</span><span class="p">}</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Get-WinEvent**: Este cmdlet é usado para obter eventos do log do sistema usando o filtro XML definido.
+- **-FilterXml \$xml**: Aplica o filtro XML para buscar eventos do provedor &quot;Microsoft-Windows-TPM-WMI&quot; e nível de erro.
+- **-ErrorAction SilentlyContinue**: Ignora erros que possam ocorrer durante a execução do comando.
+- **Where-Object {\$_.TimeCreated -ge \$startDate}**: Filtra os eventos para incluir apenas aqueles que ocorreram após a data inicial.
+</code></pre></div>
+<h4 id="verificar-se-eventos-foram-encontrados"><strong>Verificar se Eventos Foram Encontrados</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$events</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="c"># ...</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="c"># ...</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- Se a variável `$events` não estiver vazia, significa que eventos foram encontrados.
+</code></pre></div>
+<h4 id="encontrar-o-ultimo-erro"><strong>Encontrar o Último Erro</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">$lastError</span> <span class="p">=</span> <span class="nv">$events</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">TimeCreated</span> <span class="n">-Descending</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">1</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Sort-Object TimeCreated -Descending**: Ordena os eventos em ordem decrescente por data e hora de criação.
+- **Select-Object -First 1**: Selecione o primeiro evento da lista ordenada, que será o último erro ocorrido.
+</code></pre></div>
+<h4 id="exibir-informacoes-do-ultimo-erro"><strong>Exibir Informações do Último Erro</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Último erro encontrado:&quot;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Dia e Hora: </span><span class="p">$(</span><span class="nv">$lastError</span><span class="p">.</span><span class="n">TimeCreated</span><span class="p">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Mensagem: </span><span class="p">$(</span><span class="nv">$lastError</span><span class="p">.</span><span class="n">Message</span><span class="p">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- Exibe informações sobre o último erro encontrado, incluindo a data e hora de ocorrência e a mensagem do erro.
+</code></pre></div>
+<h4 id="mensagem-caso-nenhum-erro-seja-encontrado"><strong>Mensagem Caso Nenhum Erro Seja Encontrado</strong>:</h4>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Nenhum erro encontrado com fonte &#39;Microsoft-Windows-TPM-WMI&#39; nas últimas duas semanas.&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- Se a variável `$events` estiver vazia, exibe uma mensagem indicando que nenhum erro do provedor &quot;Microsoft-Windows-TPM-WMI&quot; foi encontrado.
+</code></pre></div>
+<h2 id="dicas-para-usar-o-visualizador-de-eventos">Dicas para Usar o Visualizador de Eventos</h2>
+<ul>
+<li><strong>Monitorar Regularmente</strong>: Verifique regularmente os logs para detectar problemas potenciais antes que eles se tornem graves.</li>
+<li><strong>Pesquisar IDs de Evento</strong>: Use a ID do evento para pesquisar soluções específicas na internet.</li>
+<li><strong>Criar Visualizações Personalizadas</strong>: Para facilitar a verificação de eventos específicos, crie visualizações personalizadas.</li>
+</ul>
+<p>Essas são as principais formas de usar o Visualizador de Eventos para diagnóstico simples no Windows. Com essas informações, você pode identificar e resolver problemas de forma mais eficiente.</p>
 
 
 </section>
@@ -241,6 +464,13 @@
               <span class="nav-title">09 - Gerenciamento básico de serviços e processos</span>
             </a>
           
+          
+            <a href="../../11-Projeto/projeto/"
+               class="ah-next"
+               title="11 - Projeto Final">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">11 - Projeto Final</span>
+            </a>
           
         </div>
       </footer>

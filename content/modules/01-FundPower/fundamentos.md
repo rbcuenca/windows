@@ -1,6 +1,6 @@
 # Fundamentos do PowerShell
 
-## Abrindo e personalizando o PowerShell - Posh
+## Abrindo e personalizando o PowerShell - PS
 
 O Windows PowerShell  (também chamado de PS) é muito mais do que um "prompt de comandos" como o antigo cmd herdado do DOS.
 
