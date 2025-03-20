@@ -1,8 +1,11 @@
 # Configuração Inicial
-$cpuThreshold = 80
-$memoryThreshold = 90
-$diskThreshold = 85
+$cpuThreshold = 02
+$memoryThreshold = 5
+$diskThreshold = 5
 $reportDir = "C:\SystemReports"
+$env:SMTP_SERVER = "smtp.gmail.com" # Configuração de servidor SMTP GMAIL
+$env:SMTP_FROM = "seu_email@gmail.com"
+$env:SMTP_TO = "e-mail_destino@gmaillcom"
 
 if (!(Test-Path $reportDir)) {
     New-Item -ItemType Directory -Path $reportDir
@@ -27,7 +30,7 @@ function Get-SystemInfo {
 }
 
 # Função para Gerar Relatórios
-function Generate-Report {
+function Report {
     param($systemInfo)
     
     $report = "System Report - $(Get-Date)`n"
@@ -48,7 +51,7 @@ $smtpSubject = "System Alert"
 function Send-Alert {
     param($message)
     
-    Send-MailMessage -SmtpServer $smtpServer -From $smtpFrom -To $smtpTo -Subject $smtpSubject -Body $message
+    Send-MailMessage -SmtpServer $smtpServer -Port 587 -UseSSl -Credential -From $smtpFrom -To $smtpTo -Subject $smtpSubject -Body $message # Configurando GMAIL
 }
 
 # Loop de Monitoramento
@@ -56,7 +59,7 @@ while ($true) {
     try {
         $systemInfo = Get-SystemInfo
         
-        Generate-Report -systemInfo $systemInfo
+        Report -systemInfo $systemInfo
 
         if ($systemInfo.CPU -gt $cpuThreshold -or $systemInfo.Memory -gt $memoryThreshold -or $systemInfo.Disk -lt (100 - $diskThreshold)) {
             $alertMessage = "CPU: $($systemInfo.CPU)%, Memory: $($systemInfo.Memory)%, Disk: $($systemInfo.Disk)%"
