@@ -1,15 +1,4 @@
-# Projeto Final
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
-
-# 
-
----
-
-# A gora sobre o projeto. Descreva o enunciado detalhadamente e o gabarito explicado ponto a ponto com a solução funcional para o Windows 11
-
-Claro! Aqui está uma descrição detalhada do enunciado do projeto e a solução funcional para o Windows 11.
-
-## Enunciado do Projeto
+# Enunciado do Projeto
 
 **Título:** Sistema de Monitoramento de Recursos do Sistema
 
