@@ -188,6 +188,26 @@
       <span class="ah-togglable-handle">09 - Gerenciamento básico de serviços e processos</span>
       <ul>
         
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#introducao">Introdução</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#gerenciamento-de-servicos-cmdlets-principais-para-servicos">Gerenciamento de Serviços (Cmdlets Principais para Serviços)</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#gerenciamento-de-processos-cmdlets-principais-para-processos">Gerenciamento de Processos (Cmdlets Principais para Processos)</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#dicas-para-gerenciar-servicos-e-processos">Dicas para Gerenciar Serviços e Processos</a>
+              </li>
+            
+        
       </ul>
     </li>
   
@@ -197,6 +217,31 @@
   
     <li>
       <a href="../../10-VisEvent/viseventos/">10 -  Uso do Visualizador de Eventos para diagnóstico simples</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../11-Projeto/projeto/">11 - Projeto Final</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../12-Gabarito/gabarito/">12 - Projeto Final - Gabarito</a>
     </li>
   
 
@@ -225,6 +270,102 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="gerenciamento-basico-de-servicos-e-processos">Gerenciamento Básico de Serviços e Processos</h1>
+<h2 id="introducao">Introdução</h2>
+<p>PowerShell oferece uma variedade de cmdlets para gerenciar serviços e processos no Windows, permitindo que você liste, inicie, pare e reinicie serviços, além de monitorar e controlar processos em execução.</p>
+<h2 id="gerenciamento-de-servicos-cmdlets-principais-para-servicos">Gerenciamento de Serviços (Cmdlets Principais para Serviços)</h2>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Para alguns comandos é necessário que o PS seja iniciado com permissão de adminsitrador.</div>
+<p><br></p>
+<h3 id="get-service"><strong>Get-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Obtém informações sobre serviços no computador.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Get-Service</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Name`: Filtra serviços por nome.
+    - `-DisplayName`: Filtra serviços pelo nome de exibição.
+    - `-ComputerName`: Obtém serviços em computadores remotos.
+</code></pre></div>
+<h3 id="start-service"><strong>Start-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Inicia um serviço.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Start-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+</code></pre></div>
+<h3 id="stop-service"><strong>Stop-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Para um serviço.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Stop-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+</code></pre></div>
+<h3 id="restart-service"><strong>Restart-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Reinicia um serviço.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Restart-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+</code></pre></div>
+<h3 id="suspend-service"><strong>Suspend-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Suspender um serviço.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Suspend-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+</code></pre></div>
+<h3 id="resume-service"><strong>Resume-Service</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Retomar um serviço suspenso.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">Resume-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+</code></pre></div>
+<h3 id="exemplo-pratico">Exemplo Prático</h3>
+<p>Suponha que você queira verificar se o serviço "Spooler" está em execução e, se não estiver, iniciá-lo.</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Verificar se o serviço está em execução</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$serviceStatus</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span><span class="p">).</span><span class="n">Status</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$serviceStatus</span> <span class="o">-ne</span> <span class="s2">&quot;Running&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="c"># Iniciar o serviço se não estiver em execução</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="nb">Start-Service</span> <span class="n">-Name</span> <span class="s2">&quot;Spooler&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="gerenciamento-de-processos-cmdlets-principais-para-processos">Gerenciamento de Processos (Cmdlets Principais para Processos)</h2>
+<h3 id="get-process"><strong>Get-Process</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Obtém informações sobre processos em execução.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">Get-Process</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Name`: Filtra processos por nome.
+    - `-Id`: Filtra processos por ID.
+</code></pre></div>
+<h3 id="start-process"><strong>Start-Process</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Inicia um novo processo.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="s2">&quot;notepad.exe&quot;</span>
+</code></pre></div>
+<h3 id="stop-process"><strong>Stop-Process</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Encerra um processo.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">Stop-Process</span> <span class="n">-Name</span> <span class="s2">&quot;notepad&quot;</span> <span class="n">-Force</span>
+</code></pre></div>
+<h3 id="exemplo-pratico_1">Exemplo Prático</h3>
+<p>Suponha que você queira encerrar todos os processos do Microsoft Edge.</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c"># Encerrar todos os processos do Microsoft Edge</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">Get-Process</span> <span class="n">-Name</span> <span class="s2">&quot;msedge&quot;</span> <span class="p">|</span> <span class="nb">Stop-Process</span> <span class="n">-Force</span>
+</code></pre></div>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Este comando tem a mesma função que o comando <strong>kill</strong> no Linux.</div>
+<p><br></p>
+<h2 id="dicas-para-gerenciar-servicos-e-processos">Dicas para Gerenciar Serviços e Processos</h2>
+<ul>
+<li><strong>Testar Comandos</strong>: Antes de executar comandos que alterem o estado de serviços ou processos, teste-os em um ambiente seguro.</li>
+<li><strong>Usar Parâmetros de Segurança</strong>: Use <code>-WhatIf</code> e <code>-Confirm</code> para simular ações e confirmar operações potencialmente perigosas.</li>
+<li><strong>Evitar Parar Processos Críticos</strong>: Tenha cuidado ao encerrar processos, pois alguns são essenciais para o funcionamento do sistema.</li>
+</ul>
+<p>Essas são as principais formas de gerenciar serviços e processos com PowerShell. Com esses cmdlets, você pode automatizar tarefas de gerenciamento de sistema de forma eficiente.</p>
 
 
 </section>

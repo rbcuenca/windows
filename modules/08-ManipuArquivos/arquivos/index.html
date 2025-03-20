@@ -180,6 +180,22 @@
       <span class="ah-togglable-handle">08 - Manipulação de arquivos e diretórios com PowerShell </span>
       <ul>
         
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#introducao">Introdução</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#cmdlets-principais">Cmdlets Principais</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#exemplo-pratico">Exemplo Prático</a>
+              </li>
+            
+        
       </ul>
     </li>
   
@@ -197,6 +213,31 @@
   
     <li>
       <a href="../../10-VisEvent/viseventos/">10 -  Uso do Visualizador de Eventos para diagnóstico simples</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../11-Projeto/projeto/">11 - Projeto Final</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../12-Gabarito/gabarito/">12 - Projeto Final - Gabarito</a>
     </li>
   
 
@@ -225,6 +266,81 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="manipulacao-de-arquivos-e-diretorios-com-powershell">Manipulação de Arquivos e Diretórios com PowerShell</h1>
+<h2 id="introducao">Introdução</h2>
+<p>PowerShell oferece uma variedade de cmdlets para manipular arquivos e diretórios, permitindo que você crie, copie, mova, renomeie e exclua itens no sistema de arquivos.</p>
+<h2 id="cmdlets-principais">Cmdlets Principais</h2>
+<h3 id="get-childitem"><strong>Get-ChildItem</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Lista arquivos e diretórios em um diretório.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="s2">&quot;C:\MeuDiretorio&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Recurse`: Lista itens recursivamente em subpastas.
+    - `-Filter`: Filtra itens por nome.
+    - `-Force`: Exibe itens ocultos ou do sistema.
+</code></pre></div>
+<div style="border: 1px solidrgb(19, 20, 20); border-left-width: 5px; padding: 10px; background-color:rgb(175, 178, 181); border-radius: 5px;">
+💡 <strong>Dica:</strong> Se você precisar referenciar o diretório atual, basta usar o caractere `.`. Desta forma o complemnto ficaria: <strong>Get-ChildItem -Path "."</strong></div>
+<p><br></p>
+<h3 id="new-item"><strong>New-Item</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Cria novos arquivos ou diretórios.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="s2">&quot;directory&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;C:\NovoDiretorio&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-ItemType`: Especifica se é um arquivo ou diretório.
+    - `-Value`: Define conteúdo inicial para arquivos.
+</code></pre></div>
+<h3 id="copy-item"><strong>Copy-Item</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Copia arquivos ou diretórios.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Arquivo.txt&quot;</span> <span class="n">-Destination</span> <span class="s2">&quot;C:\Backup&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Recurse`: Copia todo o conteúdo de uma pasta.
+    - `-Force`: Substitui itens de destino existentes.
+</code></pre></div>
+<h3 id="move-item"><strong>Move-Item</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Move ou renomeia arquivos ou diretórios.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Move-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Arquivo.txt&quot;</span> <span class="n">-Destination</span> <span class="s2">&quot;C:\NovoLocal&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Force`: Move itens mesmo se o destino já existir.
+</code></pre></div>
+<h3 id="remove-item"><strong>Remove-Item</strong>:</h3>
+<div class="language-text highlight"><pre><span></span><code>- **Função**: Exclui arquivos ou diretórios.
+- **Exemplo**:
+</code></pre></div>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\Arquivo.txt&quot;</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>- **Parâmetros úteis**:
+    - `-Recurse`: Exclui todo o conteúdo de uma pasta.
+    - `-Force`: Exclui itens mesmo se forem somente leitura.
+</code></pre></div>
+<h2 id="exemplo-pratico">Exemplo Prático</h2>
+<p>Suponha que você queira criar um diretório chamado "MeuBackup", copiar todos os arquivos <code>.txt</code> do diretório atual para esse novo diretório e, em seguida, excluir os arquivos originais.</p>
+<div class="language-powershell highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Criar o diretório de backup</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="s2">&quot;directory&quot;</span> <span class="n">-Path</span> <span class="s2">&quot;C:\MeuBackup&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c"># Copiar arquivos .txt para o diretório de backup</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">Get-ChildItem</span> <span class="n">-Filter</span> <span class="s2">&quot;*.txt&quot;</span> <span class="p">|</span> <span class="nb">Copy-Item</span> <span class="n">-Destination</span> <span class="s2">&quot;C:\MeuBackup&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c"># Excluir os arquivos originais</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">Get-ChildItem</span> <span class="n">-Filter</span> <span class="s2">&quot;*.txt&quot;</span> <span class="p">|</span> <span class="nb">Remove-Item</span>
+</code></pre></div>
+<h3 id="dicas-para-manipulacao-de-arquivos-e-diretorios">Dicas para Manipulação de Arquivos e Diretórios</h3>
+<ul>
+<li><strong>Testar Comandos</strong>: Antes de executar comandos que alterem dados, teste-os em um ambiente seguro para evitar perdas de dados.</li>
+<li><strong>Usar Parâmetros de Segurança</strong>: Use <code>-WhatIf</code> e <code>-Confirm</code> para simular ações e confirmar operações potencialmente perigosas.</li>
+<li><strong>Filtrar Itens</strong>: Use <code>-Filter</code> ou <code>Where-Object</code> para selecionar itens específicos com base em critérios como nome, tamanho ou data de modificação.</li>
+</ul>
+<p>Essas são as principais formas de manipular arquivos e diretórios com PowerShell. Com esses cmdlets, você pode automatizar tarefas de gerenciamento de arquivos de forma eficiente.</p>
 
 
 </section>
