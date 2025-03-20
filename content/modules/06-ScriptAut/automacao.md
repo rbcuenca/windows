@@ -29,8 +29,7 @@ Para facilitar, vamos manter o arquivo de origem dentro do diretório corrente d
 
 Vá até o diretório em que clonou a atividade, ou o diretório que você criou no primeiro script, através so PS.
 
-Crie um arquivo chamado move_arquivo.ps1 com o comando: `code move_arquivo.ps1`.
-
+Crie um arquivo chamado move_arquivo.ps1 com o comando: `code move_arquivo.ps1` e coloque o conteúdo a seguir. Não se esqueça de salvar!
 
 ```powershell
 # Criar um novo diretório
@@ -39,6 +38,8 @@ New-Item -ItemType Directory -Path "C:\MeuDiretorio"
 # Copiar um arquivo para o diretório criado
 Copy-Item "arquivo.txt" -Destination "C:\MeuDiretorio"
 ```
+
+Se você clonou o repositório o arquivo.txt já existe, se você criou a pasta, crie um arquivo chamado arquivo.txt e coloque algum texto dentro dele. Mantenha o arquivo no mesmo diretório.
 
 
 ## Executando o Script
@@ -55,7 +56,7 @@ Exemplo:
 ```powershell
 .\meuScript.ps1
 ```
-
+![Script rodando e comprovação de que rodou](img/img001.png)
 
 ### Dicas para Criar Scripts Eficientes
 

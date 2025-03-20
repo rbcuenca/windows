@@ -29,6 +29,9 @@ nav:
     - '08 - Manipulação de arquivos e diretórios com PowerShell ': modules/08-ManipuArquivos/arquivos.md
     - '09 - Gerenciamento básico de serviços e processos': modules/09-GerProcess/processos.md
     - '10 -  Uso do Visualizador de Eventos para diagnóstico simples': modules/10-VisEvent/viseventos.md
+  - "Projeto":
+    - '11 - Projeto Final': modules/11-Projeto/projeto.md
+    - '12 - Projeto Final - Gabarito': modules/12-Gabarito/gabarito.md
     # - "03 - Batch prediction":
     #   - "Part 1":
     #     - modules/03-batch/intro.md
